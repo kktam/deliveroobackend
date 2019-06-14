@@ -6,7 +6,7 @@
  * @description: A set of functions called "actions" for managing `Order`.
  */
 
-const stripe = require("stripe")("sk_test_INSERT pk_test_oxzn7RFuqoPBePvCAEj0xPMX00jRzOTK8v");
+const stripe = require("stripe")("sk_test_m1jtku3UIo5rKCMch9M1gUt500NoYdVPsH");
 
 module.exports = {
   /**
@@ -54,7 +54,7 @@ module.exports = {
    */
 
   create: async ctx => {
-    const { address, amount, dishes, token, city, state } = ctx.request.body;
+    const { address, amount, dishes, token, city } = ctx.request.body;
 
     const charge = await stripe.charges.create({
       // Transform cents to dollars.
@@ -70,8 +70,7 @@ module.exports = {
       address,
       amount,
       dishes,
-      city,
-      state
+      city
     });
 
     return order;

@@ -129,6 +129,8 @@ input editOrderInput {
   city: String
   dishes: JSON
   amount: Float
+  postalCode: String
+  user: ID
 }
 
 input editRestaurantInput {
@@ -155,6 +157,7 @@ input editUserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  orders: [ID]
 }
 
 input FileInput {
@@ -223,6 +226,8 @@ type Order {
   city: String
   dishes: JSON
   amount: Float
+  postalCode: String
+  user: UsersPermissionsUser
 }
 
 input OrderInput {
@@ -230,6 +235,8 @@ input OrderInput {
   city: String
   dishes: JSON
   amount: Float
+  postalCode: String
+  user: ID
 }
 
 type Query {
@@ -350,6 +357,7 @@ input UserInput {
   confirmed: Boolean
   blocked: Boolean
   role: ID
+  orders: [ID]
 }
 
 type UsersPermissionsMe {
@@ -395,4 +403,5 @@ type UsersPermissionsUser {
   confirmed: Boolean
   blocked: Boolean
   role: UsersPermissionsRole
+  orders(sort: String, limit: Int, start: Int, where: JSON): [Order]
 }

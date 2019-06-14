@@ -22,6 +22,14 @@
     },
     "amount": {
       "type": "decimal"
+    },
+    "postalCode": {
+      "type": "string"
+    },
+    "user": {
+      "model": "user",
+      "via": "orders",
+      "plugin": "users-permissions"
     }
   }
 }
